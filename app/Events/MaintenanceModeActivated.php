@@ -10,7 +10,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class MaintenanceModeActivated
+class MaintenanceModeActivated implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -30,7 +30,12 @@ class MaintenanceModeActivated
     public function broadcastOn(): array
     {
         return [
-            new PrivateChannel('channel-name'),
+            new Channel('maintenance'),
         ];
+    }
+
+    public function broadcastAs(): string
+    {
+        return 'maintenance';
     }
 }
