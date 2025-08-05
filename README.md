@@ -36,7 +36,7 @@ cd Reverb-Broadcasting
 2. **Install dependencies**
 ```
 composer install
-npm install && npm run dev
+npm install && npm run build
 ```
 
 3. **Create .env file**
@@ -46,7 +46,6 @@ cp .env.example .env
 
 4. **Set up .env**
 ```
-BROADCAST_CONNECTION=reverb
 QUEUE_CONNECTION=redis
 CACHE_STORE=redis
 REDIS_CLIENT=predis
@@ -57,6 +56,7 @@ Don’t forget to set other required `.env` values like `APP_KEY, DB_DATABASE,..
 Run the following to set up Reverb config and generate required keys:
 
 php artisan reverb:install
+npm run build
 ```
 5. **Redis via Docker**
 - This project uses Redis as the queue and broadcasting driver.
