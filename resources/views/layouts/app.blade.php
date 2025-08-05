@@ -47,6 +47,20 @@
                         div.innerHTML = event.message;
                         location.insertBefore(div, location.firstChild);
                     });
+
+                window.Echo.private('App.Models.User.' + {{auth()->id()}})
+                    .listen('.managers-backup-exported-event', function(event){
+                        let location = document.getElementsByTagName('main')[0];
+                        let div = document.createElement('div');
+                        div.style.width = '100%';
+                        div.style.height = '32px';
+                        div.style.lineHeight = '32px';
+                        div.style.textAlign = 'center';
+                        div.style.color = 'white';
+                        div.style.background = 'green';
+                        div.innerHTML = 'Dear ' + event.userName + ', your backups successfully exported!';
+                        location.insertBefore(div, location.firstChild);
+                    });
             });
         </script>
     </body>

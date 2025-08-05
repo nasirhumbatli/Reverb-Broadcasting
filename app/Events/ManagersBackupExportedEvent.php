@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Models\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -17,7 +18,7 @@ class ManagersBackupExportedEvent implements ShouldBroadcast
     /**
      * Create a new event instance.
      */
-    public function __construct(public int $userId)
+    public function __construct(public int $userId, public string $userName)
     {
         //
     }
