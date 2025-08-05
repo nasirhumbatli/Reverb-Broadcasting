@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Events\ManagersBackupExportedEvent;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 
@@ -12,7 +13,7 @@ class ExportSystemManagersBackup implements ShouldQueue
     /**
      * Create a new job instance.
      */
-    public function __construct()
+    public function __construct(public int $userId)
     {
         //
     }
@@ -22,6 +23,8 @@ class ExportSystemManagersBackup implements ShouldQueue
      */
     public function handle(): void
     {
-        //
+        sleep(5); // I wrote this to simulate Export Backup process.
+
+        broadcast(new ManagersBackupExportedEvent($this->userId));
     }
 }
