@@ -26,8 +26,8 @@ class NotifyUsersForMaintenanceByCommand extends Command
      */
     public function handle(): void
     {
-        $date = $this->ask('What is Maintenance start date?');
+        $message = $this->ask('What is Maintenance start date?');
 
-        broadcast(new MaintenanceModeEvent($date));
+        broadcast(new MaintenanceModeEvent($message));
     }
 }

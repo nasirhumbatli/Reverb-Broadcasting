@@ -32,5 +32,22 @@
                 {{ $slot }}
             </main>
         </div>
+        <script>
+            window.addEventListener('DOMContentLoaded', function () {
+                window.Echo.channel('maintenance-channel')
+                    .listen('.maintenance', function (event) {
+                        let location = document.getElementsByTagName('main')[0];
+                        let div = document.createElement('div');
+                        div.style.width = '100%';
+                        div.style.height = '32px';
+                        div.style.lineHeight = '32px';
+                        div.style.textAlign = 'center';
+                        div.style.color = 'white';
+                        div.style.background = 'blue';
+                        div.innerHTML = event.message;
+                        location.insertBefore(div, location.firstChild);
+                    });
+            });
+        </script>
     </body>
 </html>

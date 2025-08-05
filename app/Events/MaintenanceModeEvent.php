@@ -17,7 +17,7 @@ class MaintenanceModeEvent implements ShouldBroadcast
     /**
      * Create a new event instance.
      */
-    public function __construct()
+    public function __construct(public string $message)
     {
         //
     }
@@ -30,7 +30,7 @@ class MaintenanceModeEvent implements ShouldBroadcast
     public function broadcastOn(): array
     {
         return [
-            new Channel('maintenance'),
+            new Channel('maintenance-channel'),
         ];
     }
 
