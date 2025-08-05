@@ -68,6 +68,7 @@ docker run --name redis -p 6379:6379 -d redis
 Make sure Docker Desktop is installed and running before executing this command.
 
 6. **Run Migrations**
+- Note: `touch database/database.sqlite or configure DB_...`
 ```
 php artisan migrate
 ```
