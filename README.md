@@ -58,20 +58,28 @@ Run the following to set up Reverb config and generate required keys:
 
 php artisan reverb:install
 ```
+5. **Redis via Docker**
+- This project uses Redis as the queue and broadcasting driver.
+- You’ll need to run Redis locally — the simplest way is using Docker Desktop.
+- Start Redis with Docker:
+```
+docker run --name redis -p 6379:6379 -d redis
+```
+Make sure Docker Desktop is installed and running before executing this command.
 
-5. **Migrations**
+6. **Run Migrations**
 ```
 php artisan migrate
 ```
 
-6. **Run services**
+7. **Run services**
 ```
 php artisan serve
 php artisan reverb:start
 php artisan queue:work -v  // verbose output is helpful :)
 ```
 
-7. **Broadcasting Entry Points:**
+8. **Broadcasting Entry Points:**
 - This project demonstrates two types of real-time broadcasting:
 
 1. Direct Event Trigger (Artisan Command)
